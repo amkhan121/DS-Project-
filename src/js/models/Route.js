@@ -5,11 +5,10 @@ import {appId, appKey} from '../config';
 
 export default class Route{
     constructor(operator, line, dir, atcocode){
-       this.operator = operator;
+        this.operator = operator;
         this.line = line;
         this.dir = dir;  
-        
-             this.atcocode = atcocode;
+        this.atcocode = atcocode;
         // this.data = data; 
         // this.time = time;
     }
@@ -19,14 +18,15 @@ export default class Route{
             const rest = await axios(`https://transportapi.com/v3/uk/bus/route/${this.operator}/${this.line}/${this.dir}/${this.atcocode}///timetable.json?app_id=${appId}&app_key=${appKey}&edge_geometry=false`);
             // const rot = rest.data;  
             // console.log(rot);
-        
-
-            //   this.line = rest.data.line;
-            //   this.dir = rest.data.dir; 
-            //   this.operator = rest.data.operator; 
-            //   this.atcocode = rest.data.atcocode;        
+             // this.operator = rest.data.operator;
+              //console.log(this.operator);
+             // this.line = rest.data.line;
+              //console.log(this.line);
+            //  this.dir = rest.data.dir; 
+            //  this.atcocode = rest.data.origin_atcocode;    
+              //console.log(this.atcocode);    
               this.allstops = rest.data.stops;
-           //   console.log(this.allstops);
+              //console.log(this.allstops);
             // this.operator= routes.operator;
             // this.line = routes.line; 
             // this.dir = routes.dir;
@@ -44,7 +44,7 @@ export default class Route{
     };
     
     // get route with change details 
-    // routeDetails(line,operator, dir, atcocode){
+    // routeDetails(operator, line, dir, atcocode){
     //     this.line = line;
     //     this.operator = operator;
     //     this.dir = dir;

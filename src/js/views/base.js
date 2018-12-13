@@ -5,7 +5,8 @@ export const elements = {
     searchResList: document.querySelector('.results__list'),
     searchResPages: document.querySelector('.results__pages'),
     departRes: document.querySelector('.depart__list'),
-    departureRender: document.querySelector('.depart')
+    departureRender: document.querySelector('.depart'),
+    routeRender: document.querySelector('.route')
  
 };
 

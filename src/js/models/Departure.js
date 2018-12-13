@@ -11,9 +11,12 @@ export default class Departure{
  
     async getDeparture(){
         try{
-            const res = await axios (`https://transportapi.com/v3/uk/bus/stop/${this.atcocode}/live.json?app_id=${appId}&app_key=${appKey}&group=no&nextbuses=yes`);
-            //console.log(res);
-            this.depart = res.data.departures.all; 
+            const resd = await axios(`https://transportapi.com/v3/uk/bus/stop/${this.atcocode}/live.json?app_id=${appId}&app_key=${appKey}&group=no&nextbuses=yes`);
+            //console.log(resd);
+            
+            //this.atcocode = resd.data.atcocode;
+            //console.log(this.atcocode+"haleo");
+            this.depart = resd.data.departures.all; 
             //console.log(this.depart);
            
             // const depart = res.data.departures.all;
@@ -36,33 +39,7 @@ export default class Departure{
         }
     };
 
-    // lineNo(){
-    //     this.lineName = 'line_name';
-        
-    // }
-
-    // parseDepartures(data) {
-    //     const busNum = ['line_name', 'operator_name', 'aimed_departure_time', 'expected_departure_time', 'direction'];
-    //     const busNumShort= ['line', 'operator', 'DepartAt','Expected At', 'Toward'];
-
-        
-    //      const newDepartures = data.map(el =>{
-    //          //1) line/bus numbe capital 
-    //          let departure = el.toLowerCase(); 
-    //          busNum.forEach((unit, i) => {
-    //             departure = departure.replace(unit, busNumShort[i]);
-    //          });
-
-    //          departure = departure.replace(/ *\([^)]*\) */g, ' ');
-
-    //          const arrDepp = departure.split(' ');
-    //          const unitIndex = arrDepp.findIndex(el2 => busNumShort.includes(el2)); 
-    //         return departure;   
-
-    //      });
-    //      this.departures = newDepartures;
-        
-    // } 
+    
     
 };
 

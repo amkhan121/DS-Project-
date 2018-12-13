@@ -13,9 +13,10 @@ export default class Search{
        
         try{
         const res = await axios(`https://transportapi.com/v3/uk/places.json?app_id=${appId}&app_key=${appKey}&query=${this.query}&type=bus_stop`); 
+        //console.log(res);
         this.member = res.data.member; 
           
-       // console.log(this.member); 
+      // console.log(this.member); 
         }catch(error){
             alert(error);
         }

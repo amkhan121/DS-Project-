@@ -1,16 +1,19 @@
  import {elements} from './base';
 
 
+ 
+ 
+
  export const clearDeparture = ()=>{
      elements.departRes.innerHTML ='';
  };
-
+// ${dep.operator},${dep.line},${dep.dir},${dep.id}
  export const renderDepart = dep=>{
     const markup= ` 
  
     
         <li>
-            <a class="results__link" href="#${dep.operator}${dep.line}${dep.dir}"> 
+            <a class="results__link" href="#${dep.id}"> 
                  
                 <div class="results__data">
                     
@@ -23,7 +26,15 @@
     
     `;
     elements.departRes.insertAdjacentHTML('beforeend', markup);
+
 } ;
+
+// export const getoperator =() => dep.operator;
+//  console.log(getoperator);
+//  export const getline =() => dep.line;
+//  export const getdir =() => dep.dir;
+//  export const getatcocode =() => dep.atcocode;
+
 
  
 export const renderD = (depart) => {
@@ -32,34 +43,6 @@ export const renderD = (depart) => {
 
    
 }; 
-
-// const createDeparttt = depp => `
-
-//             <li class="recipe__item">
-//             <svg class="recipe__icon">
-//                 <use href="img/icons.svg#icon-check"></use>
-//             </svg>
-//             <div class="recipe__count">${depp.line_name}</div>
-//             <div class="recipe__ingredient">
-//                 <span class="recipe__unit">${depp.mode}</span>
-//                 pasta
-//             </div>
-//             </li>
-
-// `;
-
-// export const renderDparture = dep => {
-// const markup= `
-//             <div class="recipe__ingredients">
-//                 <ul class="recipe__ingredient-list">
-    
-//     ${departure.depart.map(el=>createDeparttt(el)).join('')} 
-    
-//     </ul>
-//     </div>
-// `;
-// elements.departRes.insertAdjacentHTML('afterbegin', markup);
-// }
 
 
                   

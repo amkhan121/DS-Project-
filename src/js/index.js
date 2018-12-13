@@ -3,6 +3,7 @@ import Departure from './models/Departure';
 import Route from './models/Route';
 import * as searchView from './views/searchView';
 import * as departureView from './views/departureView';
+import * as routeView from './views/routeView';
 import {elements, renderLoader, clearLoader} from './views/base';
 
 
@@ -97,12 +98,14 @@ const controlDeparture = async() =>{
 
         //Render depature 
        clearLoader();
+       
        departureView.renderD(state.departure.depart);
      
         
        //console.log(state.departure.depart);
       } catch (err) {
            alert('Error processing Departure!');
+           clearLoader();
            
       }
     }
@@ -110,10 +113,9 @@ const controlDeparture = async() =>{
 
 };
 
-    //window.addEventListener('hashchange', controlDeparture);
-    //window.addEventListener('load', controlDeparture);
-
-    ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlDeparture));
+   // window.addEventListener('hashchange', controlDeparture);
+   // window.addEventListener('load', controlDeparture);
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlDeparture));
 
     /**
      * Route Controllar 
@@ -122,25 +124,34 @@ const controlDeparture = async() =>{
     // r.getRoutes();   
     // console.log(r); 
 
-const controlRoute = async() =>{
+const controlRouteline = async() =>{
+     
+     const line  = window.location.hash.replace('#', '');
+     const words = line.split('/');
 
-    
-    //const line = window.location.hash.replace('#', '');
-    const operator = 
-    
-    console.log(line);
-
+   console.log(line);
+     
     if (line){
-        state.route = new Route(line);
-        // this.operator = operator;
-        // this.line = line;
-        // this.dir = dir;  
-        // this.atcocode = atcocode;
+             state.route= new Route(words[7],words[8],words[9],words[10]);
+    
+        try{
+       await state.route.getRoutes();
+             //routeView.renderRoure(state.route.allstops);
 
-        await state.route.getRoutes();
+             //clearLoader();
 
-        console.log(state.route);
+             console.log(state.route);
+         
 
-    }
+        } catch (Error) {
+                        alert('Error processing routes process!');
+                        
+        }
+    } 
 };
-window.addEventListener('hashchange', controlRoute);
+
+window.addEventListener('hashchange', controlRouteline);
+ //window.addEventListener('DOMContentLoaded', controlRouteline);
+//    window.addEventListener('load', controlRouteline);
+ //['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRouteline));
+        
